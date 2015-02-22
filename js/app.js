@@ -1,5 +1,5 @@
 // Ng-routing to the pages when linked to
-var timerApp = angular.module('allaboutimeapp', [
+var timerApp = angular.module('timerApp', [
     'ngRoute']);
 
 
@@ -13,6 +13,14 @@ timerApp.config(['$routeProvider',
             when('/page2',{
                 // each flight detailed display
                 templateUrl:'inputTimer.html'
+            }).
+            when('/page2',{
+                // each flight detailed display
+                templateUrl:'inputTimer.html'
+            }).
+            when('/page3',{
+                // each flight detailed display
+                templateUrl:'timerDisplay.html'
             }).
             otherwise({
                 redirectTo: '/page1'
