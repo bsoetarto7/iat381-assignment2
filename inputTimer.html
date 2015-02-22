@@ -1,0 +1,72 @@
+<div class="container" ng-controller="userInputCtrl">
+	<form>
+	<!-- title tag input -->
+	<div class="row">
+		<div class="col-xs-12">
+			<input type="text" class="form-control" placeholder="Event Title" name="Title">
+		</div>
+	</div>
+
+	<!-- cataloge selections -->
+	<div class="row">
+		<div class="btn-group">
+			<div class="col-xs-4">
+		     	<label class="btn btn" ng-model="radioModel" btn-radio="'1'">1</label>
+		     </div>
+
+			  <div class="col-xs-4">
+		     	<label class="btn btn" ng-model="radioModel" btn-radio="'2'">2</label>
+		     </div>
+
+		     <div class="col-xs-4">
+		     	<label class="btn btn" ng-model="radioModel" btn-radio="'3'">3</label>
+		     </div>
+
+		     <div class="col-xs-4">
+		     	<label class="btn btn" ng-model="radioModel" btn-radio="'4'">4</label>
+		     </div>
+
+		     <div class="col-xs-4">
+		     	<label class="btn btn" ng-model="radioModel" btn-radio="'5'">5</label>
+		     </div>
+
+		     <div class="col-xs-4">
+		     	<label class="btn btn" ng-model="radioModel" btn-radio="'6'">6</label>
+		     </div>
+
+  	 	</div>
+	</div>
+
+	<!-- video showing/ taking picture/ saving picture -->
+	<div class="row">
+		<div class="col-xs-12">
+			<button ng-click="takePic()">
+				<span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
+			</button>
+		</div>
+
+		<div ng-show="checkPic">
+			<div class="col-xs-12">
+				<script src="js/photo.js"></script>
+
+				<div ng-hide="showImage">
+					<video> </video>
+					<button class="takePicICon" id="Camerabutton"><span class="glyphicon glyphicon-camera" aria-hidden="true" ng-click="takingPic()"></span></button>
+				</div>
+
+				<div ng-show="showImage">
+					<img class="videoPic"id ="cameraIMG" src=''/> 
+
+					<button class="doneTakePicICon" id="Camerabutton"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" ng-click="done()"></span></button>
+
+					<button class="retakePicICon" id="Camerabutton"><span class="glyphicon glyphicon-camera" aria-hidden="true" ng-click="takingPic()"></span></button>
+				</div>
+			</div>	
+		</div>
+	</div>
+
+
+	</form>
+</div>
+
+

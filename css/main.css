@@ -1,0 +1,48 @@
+.catalogSelect{
+	
+}
+
+video{
+	width: 100%;
+}
+
+.videoPic{
+	width: 100%;
+}
+
+/*things doesn't work yet animation */
+/*.animate-show {
+  opacity: 1;
+}
+
+.animate-show.ng-hide-add.ng-hide-add-active,
+.animate-show.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition: all linear 0.5s;
+  transition: all linear 0.5s;
+}
+
+.animate-show.ng-hide {
+  line-height: 0;
+  opacity: 0;
+}*/
+
+.takePicICon{
+	position: relative;
+	z-index: 99;
+	left: 48%;
+	top: -35px;
+}
+
+.retakePicICon{
+	position: relative;
+	z-index: 99;
+	left: 60%;
+	top: -35px;
+}
+
+.doneTakePicICon{
+	position: relative;
+	z-index: 99;
+	left: 30%;
+	top: -35px;
+}
