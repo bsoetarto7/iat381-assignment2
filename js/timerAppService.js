@@ -15,6 +15,7 @@ timerApp.service('TimerService', function() {
 	}
 
 	var getEventTitle = function(){
+		ETitle="cora";
 		return ETitle;
 	}
 
@@ -49,6 +50,22 @@ timerApp.service('TimerService', function() {
 	}
 
 
+	
+
+
+
+	var getS = function(){
+		var userD = moment([2015,2,1]);
+		s = moment();
+
+		var diff = userD.diff(s);
+		console.log(s);
+		console.log(userD);
+		return parseInt(diff) ;
+
+	}
+
+
 	return {
 		addEventTitle: addEventTitle,
 		getEventTitle: getEventTitle,
@@ -57,12 +74,14 @@ timerApp.service('TimerService', function() {
 		getCategory: getCategory,
 
 
-		addDate: add,
+		addDate: addDate,
 
 
 		getDays:getDays,
 		getMonths: getMonths,
-		getYears: getYears
+		getYears: getYears,
+
+		getS:getS
 	};
 
 });

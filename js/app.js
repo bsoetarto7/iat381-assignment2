@@ -1,6 +1,6 @@
 // Ng-routing to the pages when linked to
 var timerApp = angular.module('timerApp', [
-    'ngRoute']);
+    'ngRoute','timer','angularMoment']);
 
 
 timerApp.config(['$routeProvider',

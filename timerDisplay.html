@@ -1,0 +1,14 @@
+<div  ng-controller="timeDisplayController">
+	<div class="CountdownTitle"> 
+		<h2>{{strin}}</h2>
+	</div>
+	<div class="CountDownTimer">
+		<timer ng-click="Click()" ng-hide="myDefault" countdown="countdown/1000" max-time-unit="'hour'" interval="1000">{{hhours}} hour{{hhourS}}, {{mminutes}} minute{{minutesS}}, {{sseconds}} second{{secondsS}}</timer>
+
+		<timer ng-click="Click()" ng-hide="view2" countdown="countdown/1000" max-time-unit="'day'" interval="1000">{{ddays}} days{{ddayS}}</timer>
+
+		<timer ng-click="Click()" ng-hide="view3" countdown="countdown/1000" max-time-unit="'month'" interval="1000">{{mmonths}} months{{mmonthS}},{{ddays}} days{{ddayS}}</timer>
+
+		<timer ng-click="Click()" ng-hide="view4" countdown="countdown/1000" max-time-unit="'year'" interval="1000">{{yyears}} years{{yyearS}}, {{mmonths}} months{{mmonthS}}, {{ddays}} days{{ddayS}}</timer>
+	</div>
+</div>
