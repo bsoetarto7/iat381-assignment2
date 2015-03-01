@@ -23,35 +23,24 @@ timerApp.controller('userInputCtrl', function ($scope,TimerService){
 		TimerService.addEventTitle($scope.editValue);
 	}
 
-
-	$scope.catagories = [{id: 1, name: "two"}, 
-						{id: 2, name: "three"},
-						{id: 3, name: "three"},
-						{id: 4, name: "three"},
-						{id: 5, name: "three"},
-						{id: 6, name: "three"} ];
-
+	$scope.radioModel = '1';
 	$scope.checkModel = {
-	    1: false,
-	    2: true,
-	    3: false
+	    1: true,
+	    2: false,
+	    3: false,
+	    4: false,
+	    5: false,
+	    6: false
 	};
 
-	// var myElement = document.getElementById('myElement');
-	// var mc = new Hammer(myElement);
+	// found here http://www.jqueryscript.net/form/iOS-7-Style-jQuery-3D-Animated-Value-Selector-Drumjs.html
+	// start here
+	TimerService.addCategory(1);
+	$scope.category = function(value){
+		TimerService.addCategory(value);
+	}
+	
 
-	// // listen to events...
-	// mc.on("panleft panright", function(ev) {
-	// 	if(ev.velocity < 0.05 && ev.velocity > 0.05) return;
-
-	// 	// get the direction of where user is srolling to 
-	//     var dir = ev.direction === 2 ? -1 : 1;
-	//     var change = ev.deltaY;
-	//     myElement.textContent = ev.velocity +" velocity detected.";
-
-	//     var startValues = {};
- //  		var endValues = {};
-	//   })
 
 	function getIndexForValue(elem, value) {
 		for (var i=0; i<elem.options.length; i++)
@@ -97,5 +86,11 @@ timerApp.controller('userInputCtrl', function ($scope,TimerService){
 			update(new Date());
 
 		});
+		// the online source end here
+
+		$scope.submit = function(){
+			console.log("hit");
+			TimerService.storeInputs();
+		}
 
 });

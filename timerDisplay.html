@@ -1,3 +1,24 @@
+<script type="text/javascript">
+(function(){
+	var ul=$("#navs"),li=$("#navs li"),i=li.length,n=i-1,r=120;
+	ul.click(function(){
+		$(this).toggleClass('active');
+		if($(this).hasClass('active')){
+			for(var a=0;a<i;a++){
+				li.eq(a).css({
+					'transition-delay':""+(50*a)+"ms",
+					'-webkit-transition-delay':""+(50*a)+"ms",
+					'left':(r*Math.cos(90/n*a*(Math.PI/180))),
+					'top':(-r*Math.sin(90/n*a*(Math.PI/180)))	
+				});
+			}
+		}else{
+			li.removeAttr('style');
+		}
+	});
+})($);
+</script>
+
 <div  ng-controller="timeDisplayController">
 	<div class="CountdownTitle"> 
 		<h2>{{strin}}</h2>
@@ -11,4 +32,28 @@
 
 		<timer ng-click="Click()" ng-hide="view4" countdown="countdown/1000" max-time-unit="'year'" interval="1000">{{yyears}} years{{yyearS}}, {{mmonths}} months{{mmonthS}}, {{ddays}} days{{ddayS}}</timer>
 	</div>
+	<div><a href="#/page2">back</a></div>
+	<div><a href="#/page1">home</a></div>
+
+
+	<!-- we found this online http://www.jqueryscript.net/menu/Animated-Arc-Popup-Menu-with-jQuery-CSS3-Transitions.html  starts here-->
+	<ul id="navs" data-open="less" data-close="more">
+
+		<li ng-repeat='each in dataShow' unbindable>
+			<span><a href="#{{each.index}}">{{each.title}}</a unbindable></span>
+		</li>
+
+		
+
+		<li><a href="http://www.17sucai.com/">1</a></li>
+		<li><a href="http://www.17sucai.com/">2</a></li>
+		<li><a href="http://www.17sucai.com/">3</a></li>
+		<li><a href="http://www.17sucai.com/">menu</a></li>
+		<li><a href="http://www.17sucai.com/">menu</a></li>
+	</ul>
 </div>
+
+
+
+<!-- online source end here -->
+

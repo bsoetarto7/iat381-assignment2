@@ -1,0 +1,37 @@
+<div ng-controller="HomeCtrl" class="container">
+  <div class="row">
+    <div class="errorMsg" ng-hide="myValue">
+      {{message}}
+    </div>
+
+    <ul >
+      <li ng-repeat="each in dataShow as result">
+        
+
+  
+
+<!--           <div class="modal-body">
+              <h3 class="popWindowText">deleted from Favourites!</h3>
+              </div>
+              <div class="modal-footer">
+              <button class="btn btn-primary" ng-click="ok()">OK</button>
+              </div>
+ -->
+                <button >
+                  <div href="#page1" ng-click=" removeTimer(dataShow[$index])">x</div>
+                </button>
+
+
+        <div class="row">
+          <div class"col-xs-7">
+            <div>Title: {{each.title}}</div>
+            <div>time left: {{each.time}}</div>
+          </div>
+        </div>
+
+
+      </li>
+    </ul>
+  </div>
+</div> <!--container-->
+

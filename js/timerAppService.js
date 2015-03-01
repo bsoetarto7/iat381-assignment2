@@ -1,19 +1,24 @@
 timerApp.service('TimerService', function() {
 	var TimerDatabase=[];
+	var CategoryImg = ['img/img1.png','img/img2.png','img/img3png','img/img4.png','img/img5.png','img/img6.png'];
 	
 	
 	var ETitle ='';
 	var Category ='';
+	var img ='';
 	// var days ='';
 	// var months ='';
 	// var years ='';
 
 	var date ='';
 
+	var userImage ='';
+	var index ='';	
+
 
 	// Adding & getting From Variables
 	var addEventTitle = function(newObj) {
-		ETitle=newObj;
+		ETitle = newObj;
 	}
 
 	var getEventTitle = function(){
@@ -24,12 +29,72 @@ timerApp.service('TimerService', function() {
 
 	// Adding & getting From Variables
 	var addCategory = function(newObj) {
-		Category=newObj;
+		Category = newObj;
+		img = CategoryImg[Category-1];
+		
 	}
 
 	var getCategory = function(){
 		return Category;
 	}
+
+	var getDate = function(dateInput){
+		date = dateInput;
+
+	}
+
+	var storeInputs = function(){
+		inputs = [];
+
+		inputs[0]=ETitle;
+
+		if (userImage){
+			inputs[1] = userImage;
+		}
+		else{
+			inputs[1] = img;
+		}
+		
+		inputs[2] = date;
+
+		TimerDatabase.push(inputs);
+
+		ETitle ='';
+		Category ='';
+	 	img ='';
+	 	userImage ='';
+	 	date ='';
+
+
+	 	index = TimerDatabase.length-1;
+
+	}
+
+	var getDataBase = function(){
+		return TimerDatabase;
+	}
+
+
+	var setIndex = function(value){
+		index=value;
+	}
+
+
+	var getIndex = function(){
+		return index;
+	}
+
+	// Removing from favourites list
+	var removeTimer = function(newObj){
+	  for(var i = 0; i< TimerDatabase.length; i++){
+	    if(newObj['title'] === TimerDatabase[i][0] && 
+	    	newObj['time'] === TimerDatabase[i][2]){
+	      TimerDatabase.splice(i, 1);
+	      break;
+	    }
+	  }
+	}
+
 
 		
 	// // Adding & getting From Variables
@@ -51,16 +116,6 @@ timerApp.service('TimerService', function() {
 	// 	return years;
 	// }
 
-	var getDate = function(dateInput){
-		date = dateInput;
-
-	}
-
-
-	
-
-
-
 	var getS = function(){
 
 		var userD = moment(date);
@@ -72,8 +127,6 @@ timerApp.service('TimerService', function() {
 		return parseInt(diff) ;
 
 	}
-
-
 	return {
 		addEventTitle: addEventTitle,
 		getEventTitle: getEventTitle,
@@ -82,6 +135,16 @@ timerApp.service('TimerService', function() {
 		getCategory: getCategory,
 
 		getDate: getDate,
+
+		storeInputs:storeInputs,
+
+		getDataBase: getDataBase,
+
+		setIndex: setIndex,
+
+		getIndex: getIndex,
+
+		removeTimer:removeTimer,
 		// addDate: addDate,
 
 

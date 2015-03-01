@@ -1,5 +1,25 @@
+timerApp.directive('unbindable',function(){
+	return{
+		scope:true
+	};
+
+
+});
+
 timerApp.controller('timeDisplayController', function ($scope, TimerService) {
-	$scope.countdown= TimerService.getS();
+	
+	$scope.dataBase = TimerService.getDataBase();
+	$scope.Id = TimerService.getIndex();
+
+	$scope.dataShow = [];
+
+	// console.log($scope.dataBase[$scope.Id]);
+
+	$scope.userD = moment($scope.dataBase[$scope.Id][2]);
+	$scope.s = moment();
+	$scope.diff = $scope.userD.diff($scope.s);
+
+	$scope.countdown= $scope.diff;
 
 	$scope.myDefault = false;
 	$scope.view2 = true;
@@ -15,7 +35,7 @@ timerApp.controller('timeDisplayController', function ($scope, TimerService) {
 	$scope.years = $scope.months/12;
 	
 
-	$scope.strin=TimerService.getEventTitle();
+	$scope.strin=$scope.dataBase[$scope.Id][0];
 
 	// console.log($scope.seconds);
 	// console.log($scope.minutes);
@@ -69,7 +89,17 @@ timerApp.controller('timeDisplayController', function ($scope, TimerService) {
 		}
 	}
 
+	for (var i=0; i<$scope.dataBase.length; i++){
+		if(i>=5) break;
 
+		var Repeat ={
+			'title':$scope.dataBase[i][0],
+			'index': i
+		};
 
+		$scope.dataShow.push(Repeat);
+	}
+
+	console.log($scope.dataShow);
 });
 
