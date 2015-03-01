@@ -7,28 +7,15 @@
 			</div>
 		</div>
 
-		<!-- cataloge selections -->
-<!-- 		<div class="row">
-			<div class="btn-group">
-				<div class="col-xs-2">
-				  <button ng-repeat="catagory in catagories" 
-				           class="btn" 
-				          ng-model="radioModel.id" 
-				          btn-radio="catagory.id">
-				    {{catagory.name}}
-				  </button>
-				</div>
-			</div>
-		</div>	 -->	
-
 
 		<div class="row">
 		    <div class="btn-group">
-		    	<div class="col-xs-2">
-		        <label class="btn btn-primary" ng-model="radioModel" btn-radio="catagory.id">{{catagory.name}}</label>
-		        </div>
-<!-- 		        <label class="btn btn-primary" ng-model="radioModel" btn-radio="'2'">Middle</label>
-		        <label class="btn btn-primary" ng-model="radioModel" btn-radio="'3'">Right</label> -->
+		        <label class="btn" ng-model="radioModel" btn-radio="'1'" ng-click="category(1)">1</label>
+		        <label class="btn" ng-model="radioModel" btn-radio="'2'" ng-click="category(2)">2</label>
+		        <label class="btn" ng-model="radioModel" btn-radio="'3'" ng-click="category(3)">3</label>
+		        <label class="btn" ng-model="radioModel" btn-radio="'4'" ng-click="category(4)">4</label>
+		        <label class="btn" ng-model="radioModel" btn-radio="'5'" ng-click="category(5)">5</label>
+		        <label class="btn" ng-model="radioModel" btn-radio="'6'" ng-click="category(6)">6</label>
 		    </div>
 	    </div>		
 
@@ -227,7 +214,8 @@
 			</div>
 		</form>
 	</div>
-	<a href="#/page3">link</a>
+
+	<div class="row"><a href="#/page3" ng-click="submit()">Submit</a></div>
 </div>
 
 
