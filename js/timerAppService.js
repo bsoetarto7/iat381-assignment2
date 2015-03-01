@@ -4,9 +4,11 @@ timerApp.service('TimerService', function() {
 	
 	var ETitle ='';
 	var Category ='';
-	var days ='';
-	var months ='';
-	var years ='';
+	// var days ='';
+	// var months ='';
+	// var years ='';
+
+	var date ='';
 
 
 	// Adding & getting From Variables
@@ -15,7 +17,7 @@ timerApp.service('TimerService', function() {
 	}
 
 	var getEventTitle = function(){
-		ETitle="cora";
+		// ETitle="cora";
 		return ETitle;
 	}
 
@@ -30,23 +32,28 @@ timerApp.service('TimerService', function() {
 	}
 
 		
-	// Adding & getting From Variables
-	var addDate = function(newObj,newObj2,newObj3) {
-		days=newObj;
-		months=newObj2;
-		years=newObj3;
-	}
+	// // Adding & getting From Variables
+	// var addDate = function(newObj,newObj2,newObj3) {
+	// 	days=newObj;
+	// 	months=newObj2;
+	// 	years=newObj3;
+	// }
 
-	var getDays = function(){
-		return days;
-	}
+	// var getDays = function(){
+	// 	return days;
+	// }
 
-	var getMonths = function(){
-		return months;
-	}
+	// var getMonths = function(){
+	// 	return months;
+	// }
 
-	var getYears = function(){
-		return years;
+	// var getYears = function(){
+	// 	return years;
+	// }
+
+	var getDate = function(dateInput){
+		date = dateInput;
+
 	}
 
 
@@ -55,12 +62,13 @@ timerApp.service('TimerService', function() {
 
 
 	var getS = function(){
-		var userD = moment([2015,2,1]);
+
+		var userD = moment(date);
 		s = moment();
 
 		var diff = userD.diff(s);
-		console.log(s);
-		console.log(userD);
+		// console.log(s);
+		// console.log(userD);
 		return parseInt(diff) ;
 
 	}
@@ -73,13 +81,13 @@ timerApp.service('TimerService', function() {
 		addCategory: addCategory,
 		getCategory: getCategory,
 
+		getDate: getDate,
+		// addDate: addDate,
 
-		addDate: addDate,
 
-
-		getDays:getDays,
-		getMonths: getMonths,
-		getYears: getYears,
+		// getDays:getDays,
+		// getMonths: getMonths,
+		// getYears: getYears,
 
 		getS:getS
 	};

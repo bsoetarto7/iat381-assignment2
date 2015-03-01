@@ -1,4 +1,4 @@
-timerApp.controller('userInputCtrl', function ($scope){
+timerApp.controller('userInputCtrl', function ($scope,TimerService){
 
 
 	$scope.checkPic = false;
@@ -18,6 +18,11 @@ timerApp.controller('userInputCtrl', function ($scope){
 		$scope.checkPic = !$scope.checkPic;
 	}
 
+	$scope.change = function(){
+		// console.log($scope.editValue);
+		TimerService.addEventTitle($scope.editValue);
+	}
+
 
 	$scope.catagories = [{id: 1, name: "two"}, 
 						{id: 2, name: "three"},
@@ -25,7 +30,12 @@ timerApp.controller('userInputCtrl', function ($scope){
 						{id: 4, name: "three"},
 						{id: 5, name: "three"},
 						{id: 6, name: "three"} ];
-	$scope.radioModel = { id: 6 }
+
+	$scope.checkModel = {
+	    1: false,
+	    2: true,
+	    3: false
+	};
 
 	// var myElement = document.getElementById('myElement');
 	// var mc = new Hammer(myElement);
@@ -80,6 +90,7 @@ timerApp.controller('userInputCtrl', function ($scope){
 
 					// this where out put the time
 					// console.log(date);
+					TimerService.getDate(date);
 					$('.date_header .selection').html(format);
 				}
 			});
