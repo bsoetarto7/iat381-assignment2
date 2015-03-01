@@ -3,7 +3,7 @@
 		<!-- title tag input -->
 		<div class="row">
 			<div class="col-xs-12">
-				<input type="text" class="form-control" placeholder="Event Title" name="Title">
+				<input type="text" class="form-control" placeholder="Event Title" name="Title" ng-model="editValue" ng-change="change()">
 			</div>
 		</div>
 
@@ -19,8 +19,19 @@
 				  </button>
 				</div>
 			</div>
-		</div>
- -->
+		</div>	 -->	
+
+
+		<div class="row">
+		    <div class="btn-group">
+		    	<div class="col-xs-2">
+		        <label class="btn btn-primary" ng-model="radioModel" btn-radio="catagory.id">{{catagory.name}}</label>
+		        </div>
+<!-- 		        <label class="btn btn-primary" ng-model="radioModel" btn-radio="'2'">Middle</label>
+		        <label class="btn btn-primary" ng-model="radioModel" btn-radio="'3'">Right</label> -->
+		    </div>
+	    </div>		
+
 		<!-- video showing/ taking picture/ saving picture -->
 		<div class="row">
 			<div class="col-xs-12">
@@ -49,7 +60,7 @@
 			</div>
 		</div>
 	</form>	
-</div>
+
 
 	<div class="row">
 		<div class="date_header col-xs-12"> 
@@ -216,9 +227,9 @@
 			</div>
 		</form>
 	</div>
+	<a href="#/page3">link</a>
+</div>
 
-<!-- <div id="myElement">
-</div> -->
 
 
 
