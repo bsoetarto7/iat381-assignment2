@@ -2,7 +2,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-2">
-               
             </div>
             <div class="col-xs-8">
                 <div class="head">TIMESEY</div>
@@ -15,31 +14,29 @@
     </div>
 </nav>
 <div ng-controller="HomeCtrl" class="container">
-  <div class="row">
-    <div class="errorMsg" ng-hide="myValue">
-      {{message}}
-    </div>
+    <div class="row">
+        <div class="errorMsg" ng-hide="myValue">
+          {{message}}
+        </div>
 
-      
-      
-    <ul class="homeList" >
-        
-            <li ng-repeat="each in dataShow as result" class="homeList">
-                <div class="row boxOfTimer ">
-                    <div class="col-xs-10" ng-click="direct(dataShow[$index])">
-                        <div ><a class="titleFont" >Title: {{each.title}}</a></div>
-                    </div>
+          
+          
+        <ul class="homeList" >
+                <li ng-repeat="each in dataShow as result" class="homeList">
+                    <div class="row boxOfTimer">
+                        <div class="col-xs-10" ng-click="direct(dataShow[$index])">
+                            <div ><a class="titleFont" >Title: {{each.title}}</a></div>
+                        </div>
 
-                    <div class="col-xs-2">
-                       
+                        <div class="col-xs-2">
+                           
                             <div href="#page1" ng-click="removeTimer(dataShow[$index])"><img src="img/x.png " width="20"/></div>
-                      
+                          
+                        </div>
                     </div>
-                </div>
-            </li>
-        
-    </ul>
-    
-  </div>
+                </li>
+        </ul>
+
+    </div>
 </div> <!--container-->
 

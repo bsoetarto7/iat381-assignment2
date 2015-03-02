@@ -6,12 +6,7 @@ timerApp.service('TimerService', function() {
 	var ETitle ='';
 	var Category ='';
 	var img ='';
-	// var days ='';
-	// var months ='';
-	// var years ='';
-
 	var date ='';
-
 	var userImage ='';
 	var index ='';	
 
@@ -22,7 +17,6 @@ timerApp.service('TimerService', function() {
 	}
 
 	var getEventTitle = function(){
-		// ETitle="cora";
 		return ETitle;
 	}
 
@@ -61,11 +55,6 @@ timerApp.service('TimerService', function() {
             inputs[0]="Timer";
         }
 		
-        
-        
-        
-        
-
 		if (userImage){
 			inputs[1] = userImage;
 		}
@@ -100,9 +89,7 @@ timerApp.service('TimerService', function() {
 		    	index = i;
 		      	break;
 		    }
-		  }
-
-		// index=value;
+		}
 	}
 
 	var resetIndex = function(value){
@@ -114,7 +101,7 @@ timerApp.service('TimerService', function() {
 		return index;
 	}
 
-	// Removing from favourites list
+
 	var removeTimer = function(newObj){
 	  for(var i = 0; i< TimerDatabase.length; i++){
 	    if(newObj['title'] === TimerDatabase[i][0] && 
@@ -126,37 +113,6 @@ timerApp.service('TimerService', function() {
 	}
 
 
-		
-	// // Adding & getting From Variables
-	// var addDate = function(newObj,newObj2,newObj3) {
-	// 	days=newObj;
-	// 	months=newObj2;
-	// 	years=newObj3;
-	// }
-
-	// var getDays = function(){
-	// 	return days;
-	// }
-
-	// var getMonths = function(){
-	// 	return months;
-	// }
-
-	// var getYears = function(){
-	// 	return years;
-	// }
-
-	var getS = function(){
-
-		var userD = moment(date);
-		s = moment();
-
-		var diff = userD.diff(s);
-		// console.log(s);
-		// console.log(userD);
-		return parseInt(diff) ;
-
-	}
 	return {
 		addEventTitle: addEventTitle,
 		getEventTitle: getEventTitle,
@@ -178,15 +134,9 @@ timerApp.service('TimerService', function() {
 
 		resetIndex:resetIndex,
 
-		removeTimer:removeTimer,
-		// addDate: addDate,
+		removeTimer:removeTimer
 
 
-		// getDays:getDays,
-		// getMonths: getMonths,
-		// getYears: getYears,
-
-		getS:getS
 	};
 
 });
