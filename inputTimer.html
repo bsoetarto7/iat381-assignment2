@@ -2,18 +2,21 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-2">
-                <a href="#/page1"><img class="back-button" src="img/back-white.png"  width="26" /></a>
+                <a href="#/page1"><img class="back-button" src="img/home.png"  width="26" /></a>
             </div>
             <div class="col-xs-8">
                 <div class="head">TIMESEY</div>
             </div>
+<!--
             <div class="col-xs-1">
                   <a href="#/page1"><img class="plus-button" src="img/plus-white.png"  width="26" /></a>
             </div>
+-->
             
         </div>
     </div>
 </nav>
+
 <div class="container" ng-controller="userInputCtrl">
     
 
@@ -67,7 +70,7 @@
                 
                 <div class="col-xs-3">
                     <button class="camera btn-group imgstyle" ng-click="takePic()">
-                        <img class="imgstyle" src="img/camera-white.png"  />
+                        <img class="imgstyle2" src="img/camera-white.png"  />
 					
 				    </button>
                     </div><!-- col-xs-3!-->
@@ -83,15 +86,15 @@
 				<div class="col-xs-12">
 					<div ng-hide="showImage">
 						<video> </video>
-						<button class="takePicICon" id="Camerabutton"><span class="glyphicon glyphicon-camera" aria-hidden="true" ng-click="takingPic()"></span></button>
+						<button class="takePicICon" id="Camerabutton"><img src ="img/take-pic.png" width="35" ng-click="takingPic()"/></button>
 					</div>
 
 					<div ng-show="showImage">
 						<img class="videoPic"id ="cameraIMG" src=''/> 
 
-						<button class="doneTakePicICon" id="Camerabutton"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" ng-click="done()"></span></button>
+						<button class="doneTakePicICon"><img src ="img/thumb-up.png" width="35" ng-click="done()"/></button>
 
-						<button class="retakePicICon" id="Camerabutton"><span class="glyphicon glyphicon-camera" aria-hidden="true" ng-click="takingPic()"></span></button>
+						<button class="retakePicICon"><img src ="img/take-pic.png" width="35" ng-click="takingPic()"/></button>
 					</div>
 				</div>	
 			</div>
@@ -107,7 +110,7 @@
 	<div class="row Datesection">
 		<form name="date">
             
-            <div class="col-xs-2">
+            <div class="col-xs-3">
 				<select class="date" id="fullYear" name="fullYear">
 					<option value="2015">2015</option>
 					<option value="2016">2016</option>
@@ -117,7 +120,7 @@
 				</select>
 			</div>
 
-			<div class="col-xs-2">
+			<div class="col-xs-3">
 				<select class="date" id="month" name="month">
 					<option value="0">Jan.</option>
 					<option value="1">Feb.</option>
