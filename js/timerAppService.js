@@ -1,6 +1,6 @@
 timerApp.service('TimerService', function() {
 	var TimerDatabase=[];
-	var CategoryImg = ['img/img1.png','img/img2.png','img/img3png','img/img4.png','img/img5.png','img/img6.png'];
+	var CategoryImg = ['img/img1.png','img/img2.png','img/img3png','img/img4.png','img/img5.png','img/img6.png','img/img7.png'];
 	
 	
 	var ETitle ='';
@@ -38,15 +38,33 @@ timerApp.service('TimerService', function() {
 		return Category;
 	}
 
-	var getDate = function(dateInput){
+	var setDate = function(dateInput){
 		date = dateInput;
 
 	}
+    
+    var getDate = function(){
+		return date;
+
+	}
+    
+    var setUserImage = function(img){
+        userImage = img;
+    }
 
 	var storeInputs = function(){
 		inputs = [];
-
-		inputs[0]=ETitle;
+        
+        if(ETitle){
+            inputs[0]=ETitle;
+        }else{
+            inputs[0]="Timer";
+        }
+		
+        
+        
+        
+        
 
 		if (userImage){
 			inputs[1] = userImage;
@@ -76,7 +94,19 @@ timerApp.service('TimerService', function() {
 
 
 	var setIndex = function(value){
-		index=value;
+		for(var i = 0; i< TimerDatabase.length; i++){
+		    if(value['title'] === TimerDatabase[i][0] && 
+		    	value['time'] === TimerDatabase[i][2]){
+		    	index = i;
+		      	break;
+		    }
+		  }
+
+		// index=value;
+	}
+
+	var resetIndex = function(value){
+		index = value;
 	}
 
 
@@ -135,6 +165,7 @@ timerApp.service('TimerService', function() {
 		getCategory: getCategory,
 
 		getDate: getDate,
+        setDate: setDate,
 
 		storeInputs:storeInputs,
 
@@ -143,6 +174,9 @@ timerApp.service('TimerService', function() {
 		setIndex: setIndex,
 
 		getIndex: getIndex,
+        setUserImage:setUserImage,
+
+		resetIndex:resetIndex,
 
 		removeTimer:removeTimer,
 		// addDate: addDate,
