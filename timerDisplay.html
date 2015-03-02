@@ -1,22 +1,22 @@
 <script type="text/javascript">
-(function(){
-	var ul=$("#navs"),li=$("#navs li"),i=li.length,n=i/1.25,r= 110;
-	ul.click(function(){
-		$(this).toggleClass('active');
-		if($(this).hasClass('active')){
-			for(var a=0;a<i;a++){
-				li.eq(a).css({
-					'transition-delay':""+(50*a)+"ms",
-					'-webkit-transition-delay':""+(50*a)+"ms",
-					'left':(r*Math.cos(180/n*a*(Math.PI/180))),
-					'top':(-r*Math.sin(180/n*a*(Math.PI/180)))	
-				});
+	(function(){
+		var ul=$("#navs"),li=$("#navs li"),i=li.length,n=i/1.25,r= 110;
+		ul.click(function(){
+			$(this).toggleClass('active');
+			if($(this).hasClass('active')){
+				for(var a=0;a<i;a++){
+					li.eq(a).css({
+						'transition-delay':""+(50*a)+"ms",
+						'-webkit-transition-delay':""+(50*a)+"ms",
+						'left':(r*Math.cos(180/n*a*(Math.PI/180))),
+						'top':(-r*Math.sin(180/n*a*(Math.PI/180)))	
+					});
+				}
+			}else{
+				li.removeAttr('style');
 			}
-		}else{
-			li.removeAttr('style');
-		}
-	});
-})($);
+		});
+	})($);
 </script>
 
 <nav class="navbar navbar-default">
@@ -37,20 +37,15 @@
 </nav>
 
 <div  ng-controller="timeDisplayController" ng-style="UserImage">
-	<div class="CountdownTitle"> 
+	<div class="CountdownTitle animated fadeIn"> 
 		<h2>{{strin}}</h2>
 	</div>
-	<div id="countdown1" class="CountDownTimer" ng-click="changeView()" ng-show="myDefault">
+	<div id="countdown1" class="CountDownTimer animated fadeIn" ng-click="changeView()" ng-show="myDefault">
         LOADING.....
 	</div>
-    <div id="countdown" class="CountDownTimer" ng-click="changeView()" ng-show="view2">
+    <div id="countdown" class="CountDownTimer animated fadeIn" ng-click="changeView()" ng-show="view2">
         LOADING.....
 	</div>
-<!--
-	<div><a class="button-style" href="#/page2">back</a></div>
-	<div><a class="button-style"    href="#/page1">home</a></div>
--->
-
 
 <!-- we found this online http://www.jqueryscript.net/menu/Animated-Arc-Popup-Menu-with-jQuery-CSS3-Transitions.html  starts here-->
 	<ul id="navs" data-open="less" data-close="more">

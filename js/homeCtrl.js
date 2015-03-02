@@ -1,5 +1,5 @@
 timerApp.controller('HomeCtrl', function ($scope,$window, TimerService) {
-	// get information from the service page 
+
 	$scope.message='';
 	$scope.dataBase= TimerService.getDataBase();
 	$scope.dataShow = [];
