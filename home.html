@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-2">
-                <a href="#/page1"><img class="back-button" src="img/back-white.png"  width="26" /></a>
+               
             </div>
             <div class="col-xs-8">
                 <div class="head">TIMESEY</div>
@@ -25,15 +25,15 @@
     <ul class="homeList" >
         
             <li ng-repeat="each in dataShow as result" class="homeList">
-                <div class="row">
+                <div class="row boxOfTimer ">
                     <div class="col-xs-10" ng-click="direct(dataShow[$index])">
-                        <div><a >Title: {{each.title}}</a></div>
+                        <div ><a class="titleFont" >Title: {{each.title}}</a></div>
                     </div>
 
                     <div class="col-xs-2">
-                         <button >
-                            <div href="#page1" ng-click="removeTimer(dataShow[$index])">x</div>
-                        </button>
+                       
+                            <div href="#page1" ng-click="removeTimer(dataShow[$index])"><img src="img/x.png " width="20"/></div>
+                      
                     </div>
                 </div>
             </li>

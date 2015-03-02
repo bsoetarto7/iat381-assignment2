@@ -44,6 +44,8 @@ timerApp.controller('timeDisplayController', function ($scope, TimerService) {
 
 		$scope.strin=$scope.dataBase[$scope.Id][0];
 		$scope.userD = moment($scope.dataBase[$scope.Id][2]);
+        $scope.UserImage = {background: "url("+$scope.dataBase[$scope.Id][1]+") no-repeat center center fixed",
+						height:"90%","z-index":"999",overflow:"hidden" };
 
 		$scope.s = moment();
 
