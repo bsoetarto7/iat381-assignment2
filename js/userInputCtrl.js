@@ -1,8 +1,44 @@
-timerApp.controller('userInputCtrl', function ($scope,TimerService){
+timerApp.controller('userInputCtrl', function ($scope,TimerService,$window){
+    navigator.getUserMedia = (
+    navigator.getUserMedia ||
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia ||
+    navigator.msGetUserMedia
+    );
+ 
+    navigator.getUserMedia({
+      video: true
+    }, function (localMediaStream) {
+ 
+        var video = document.querySelector('video');
+        video.src = window.URL.createObjectURL(localMediaStream);
+        video.play();
+ 
+        var button = document.getElementById('Camerabutton');
+        button.onclick = function () {
+            var canvas = document.createElement('canvas');
+            var w = video.videoWidth;
+            var h = video.videoHeight;
+            canvas.width  = w;
+            canvas.height = h;
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, w, h);
+            // document.body.appendChild(canvas);
 
+            var imgData = canvas.toDataURL("img/png");
+            TimerService.setUserImage(imgData);
+            document.getElementById('cameraIMG').setAttribute( 'src', imgData);
+    
+        }
+ 
+    }, function (err) {
+    alert(err);
+    });
 
 	$scope.checkPic = false;
 	$scope.showImage = false;
+    
+    $scope.errorMSG = false;
 
 
 	$scope.takePic = function(){
@@ -79,7 +115,7 @@ timerApp.controller('userInputCtrl', function ($scope,TimerService){
 
 					// this where out put the time
 					// console.log(date);
-					TimerService.getDate(date);
+					TimerService.setDate(date);
 					$('.date_header .selection').html(format);
 				}
 			});
@@ -88,9 +124,22 @@ timerApp.controller('userInputCtrl', function ($scope,TimerService){
 		});
 		// the online source end here
 
-		$scope.submit = function(){
-			console.log("hit");
-			TimerService.storeInputs();
+        $scope.submit = function(){
+			$scope.dataBase = TimerService.getDataBase();
+			$scope.Id = TimerService.getIndex();
+			$scope.userD = moment(TimerService.getDate());
+			$scope.s = moment();
+			$scope.diff = $scope.userD.diff($scope.s);
+
+			if($scope.diff>0){
+				$scope.errorMSG = false;
+				$window.location.href = '#/page3';
+				TimerService.storeInputs();
+			}else{
+				$scope.errorMSG = true;
+			}
+
+			
 		}
 
 });

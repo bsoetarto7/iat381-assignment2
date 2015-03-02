@@ -1,4 +1,4 @@
-timerApp.controller('HomeCtrl', function ($scope, TimerService) {
+timerApp.controller('HomeCtrl', function ($scope,$window, TimerService) {
 	// get information from the service page 
 	$scope.message='';
 	$scope.dataBase= TimerService.getDataBase();
@@ -14,6 +14,11 @@ timerApp.controller('HomeCtrl', function ($scope, TimerService) {
 	if(!$scope.message){
 		$scope.myValue= true;
 	}
+    $scope.direct = function($item){
+        TimerService.setIndex($item);
+        $window.location.href='#/page3';
+        
+    }
 	
     // remove items when the cross button is clicked
     $scope.removeTimer = function($item){
