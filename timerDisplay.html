@@ -1,6 +1,6 @@
 <script type="text/javascript">
 (function(){
-	var ul=$("#navs"),li=$("#navs li"),i=li.length,n=i-1,r=120;
+	var ul=$("#navs"),li=$("#navs li"),i=li.length,n=i/1.25,r= 110;
 	ul.click(function(){
 		$(this).toggleClass('active');
 		if($(this).hasClass('active')){
@@ -8,8 +8,8 @@
 				li.eq(a).css({
 					'transition-delay':""+(50*a)+"ms",
 					'-webkit-transition-delay':""+(50*a)+"ms",
-					'left':(r*Math.cos(90/n*a*(Math.PI/180))),
-					'top':(-r*Math.sin(90/n*a*(Math.PI/180)))	
+					'left':(r*Math.cos(180/n*a*(Math.PI/180))),
+					'top':(-r*Math.sin(180/n*a*(Math.PI/180)))	
 				});
 			}
 		}else{
@@ -19,37 +19,64 @@
 })($);
 </script>
 
-<div  ng-controller="timeDisplayController">
+<nav class="navbar navbar-default" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-2">
+                <a href="#/page1">Home</a>
+            </div>
+            <div class="col-xs-8">
+                <h1>TIMESEY</h1>
+            </div>
+            <div class="col-xs-2">
+                <a href="#/page2">ADD</a>
+            </div>
+            
+        </div>
+    </div>
+</nav>
+
+<div  ng-controller="timeDisplayController" ng-style="UserImage">
 	<div class="CountdownTitle"> 
 		<h2>{{strin}}</h2>
 	</div>
-	<div class="CountDownTimer">
-		<timer ng-click="Click()" ng-hide="myDefault" countdown="countdown/1000" max-time-unit="'hour'" interval="1000">{{hhours}} hour{{hhourS}}, {{mminutes}} minute{{minutesS}}, {{sseconds}} second{{secondsS}}</timer>
-
-		<timer ng-click="Click()" ng-hide="view2" countdown="countdown/1000" max-time-unit="'day'" interval="1000">{{ddays}} days{{ddayS}}</timer>
-
-		<timer ng-click="Click()" ng-hide="view3" countdown="countdown/1000" max-time-unit="'month'" interval="1000">{{mmonths}} months{{mmonthS}},{{ddays}} days{{ddayS}}</timer>
-
-		<timer ng-click="Click()" ng-hide="view4" countdown="countdown/1000" max-time-unit="'year'" interval="1000">{{yyears}} years{{yyearS}}, {{mmonths}} months{{mmonthS}}, {{ddays}} days{{ddayS}}</timer>
+	<div id="countdown1" class="CountDownTimer" ng-click="changeView()" ng-show="myDefault">
+        LOADING.....
 	</div>
-	<div><a href="#/page2">back</a></div>
-	<div><a href="#/page1">home</a></div>
+    <div id="countdown" class="CountDownTimer" ng-click="changeView()" ng-show="view2">
+        LOADING.....
+	</div>
+<!--
+	<div><a class="button-style" href="#/page2">back</a></div>
+	<div><a class="button-style"    href="#/page1">home</a></div>
+-->
 
 
-	<!-- we found this online http://www.jqueryscript.net/menu/Animated-Arc-Popup-Menu-with-jQuery-CSS3-Transitions.html  starts here-->
+<!-- we found this online http://www.jqueryscript.net/menu/Animated-Arc-Popup-Menu-with-jQuery-CSS3-Transitions.html  starts here-->
 	<ul id="navs" data-open="less" data-close="more">
 
-		<li ng-repeat='each in dataShow' unbindable>
-			<span><a href="#{{each.index}}">{{each.title}}</a unbindable></span>
+		<li ng-show="show[0]">
+			<a href="#/page3" ng-click="ChangeIndex(0)">{{strName[0]}}</a>
 		</li>
 
-		
+		<li ng-show="show[1]">
+			<a href="#/page3" ng-click="ChangeIndex(1)">{{strName[1]}}</a>
+		</li>
 
-		<li><a href="http://www.17sucai.com/">1</a></li>
-		<li><a href="http://www.17sucai.com/">2</a></li>
-		<li><a href="http://www.17sucai.com/">3</a></li>
-		<li><a href="http://www.17sucai.com/">menu</a></li>
-		<li><a href="http://www.17sucai.com/">menu</a></li>
+
+		<li ng-show="show[2]">
+			<a href="#/page3" ng-click="ChangeIndex(2)">{{strName[2]}}</a>
+		</li>
+
+
+		<li ng-show="show[3]">
+			<a href="#/page3" ng-click="ChangeIndex(3)">{{strName[3]}}</a>
+		</li>
+
+		<li ng-show="show[4]">
+			<a href="#/page3" ng-click="ChangeIndex(4)">{{strName[4]}}</a>
+		</li>
+
 	</ul>
 </div>
 
