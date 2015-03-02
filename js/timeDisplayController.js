@@ -7,9 +7,8 @@ timerApp.controller('timeDisplayController', function ($scope, TimerService) {
 
 	$scope.strin=$scope.dataBase[$scope.Id][0];
 	$scope.userD = moment($scope.dataBase[$scope.Id][2]);
-    console.log($scope.dataBase[$scope.Id][1]);
-    $scope.UserImage = {background: "url("+$scope.dataBase[$scope.Id][1]+") no-repeat center center fixed",
-						height:"90%","z-index":"999",overflow:"hidden" };
+ 
+    $scope.UserImage = {background: "url("+$scope.dataBase[$scope.Id][1]+") no-repeat center center fixed", height:"90%","z-index":"999", overflow:"hidden" };
     
     
 	$scope.s = moment();
@@ -56,6 +55,21 @@ timerApp.controller('timeDisplayController', function ($scope, TimerService) {
 		$scope.updateTime();
 
 	}
+
+	$scope.updateTime = function(){
+
+		// set the date we're counting down to
+		var target_date = $scope.userD;
+
+		// variables for time units
+		var years, months, days, hours, minutes, seconds;
+
+		// get tag element
+		var countdown = document.getElementById('countdown');
+
+		if (timer)	window.clearInterval(timer);
+		timer = intervalTrigger(target_date);
+	}
     
 
 
@@ -80,22 +94,7 @@ timerApp.controller('timeDisplayController', function ($scope, TimerService) {
 	}
 
 
-	$scope.updateTime = function(){
 
-		// set the date we're counting down to
-		var target_date = $scope.userD;
-
-		console.log(target_date);
-
-		// variables for time units
-		var years, months, days, hours, minutes, seconds;
-
-		// get tag element
-		var countdown = document.getElementById('countdown');
-
-		if (timer)	window.clearInterval(timer);
-		timer = intervalTrigger(target_date);
-	}
 
 	// set the date we're counting down to
 	var target_date = $scope.userD;

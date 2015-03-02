@@ -23,7 +23,7 @@ timerApp.controller('userInputCtrl', function ($scope,TimerService,$window){
             canvas.height = h;
             var ctx = canvas.getContext('2d');
             ctx.drawImage(video, 0, 0, w, h);
-            // document.body.appendChild(canvas);
+
 
             var imgData = canvas.toDataURL("img/png");
             TimerService.setUserImage(imgData);
@@ -55,7 +55,6 @@ timerApp.controller('userInputCtrl', function ($scope,TimerService,$window){
 	}
 
 	$scope.change = function(){
-		// console.log($scope.editValue);
 		TimerService.addEventTitle($scope.editValue);
 	}
 
@@ -79,67 +78,69 @@ timerApp.controller('userInputCtrl', function ($scope,TimerService,$window){
 
 
 	function getIndexForValue(elem, value) {
-		for (var i=0; i<elem.options.length; i++)
-			if (elem.options[i].value == value)
+		for (var i=0; i<elem.options.length; i++){
+			if (elem.options[i].value == value){
 				return i;
-		}
-
-		function pad(number) {
-			if ( number < 10 ) {
-				return '0' + number;
 			}
-			return number;
 		}
+	}
 
-		function update(datetime) {
-			$("#date").drum('setIndex', datetime.getDate()-1); 
-			$("#month").drum('setIndex', datetime.getMonth()); 
-			$("#fullYear").drum('setIndex', getIndexForValue($("#fullYear")[0], datetime.getFullYear())); 
-			$("#hours").drum('setIndex', datetime.getHours()); 
-			$("#minutes").drum('setIndex', datetime.getMinutes()); 			
+	function pad(number) {
+		if ( number < 10 ) {
+			return '0' + number;
 		}
+		return number;
+	}
 
-		$(document).ready(function () {
-			$("select.date").drum({
-				onChange : function (elem) {
-					var arr = {'date' : 'setDate', 'month' : 'setMonth', 'fullYear' : 'setFullYear', 'hours' : 'setHours', 'minutes' : 'setMinutes'};
-					var date = new Date();
-					for (var s in arr) {
-						var i = ($("form[name='date'] select[name='" + s + "']"))[0].value;
-						eval ("date." + arr[s] + "(" + i + ")");
-					}
-					date.setSeconds(0);
-					update(date);
+	function update(datetime) {
+		$("#date").drum('setIndex', datetime.getDate()-1); 
+		$("#month").drum('setIndex', datetime.getMonth()); 
+		$("#fullYear").drum('setIndex', getIndexForValue($("#fullYear")[0], datetime.getFullYear())); 
+		$("#hours").drum('setIndex', datetime.getHours()); 
+		$("#minutes").drum('setIndex', datetime.getMinutes()); 			
+	}
 
-					var format = date.getFullYear() + '-' + pad( date.getMonth() + 1 ) + '-' + pad( date.getDate() ) + ' ' + pad( date.getHours() ) + ':' + pad( date.getMinutes() );
-
-					// this where out put the time
-					// console.log(date);
-					TimerService.setDate(date);
-					$('.date_header .selection').html(format);
+	$(document).ready(function () {
+		$("select.date").drum({
+			onChange : function (elem) {
+				var arr = {'date' : 'setDate', 'month' : 'setMonth', 'fullYear' : 'setFullYear', 'hours' : 'setHours', 'minutes' : 'setMinutes'};
+				var date = new Date();
+				for (var s in arr) {
+					var i = ($("form[name='date'] select[name='" + s + "']"))[0].value;
+					eval ("date." + arr[s] + "(" + i + ")");
 				}
-			});
-			update(new Date());
+				date.setSeconds(0);
+				update(date);
 
-		});
-		// the online source end here
+				var format = date.getFullYear() + '-' + pad( date.getMonth() + 1 ) + '-' + pad( date.getDate() ) + ' ' + pad( date.getHours() ) + ':' + pad( date.getMinutes() );
 
-        $scope.submit = function(){
-			$scope.dataBase = TimerService.getDataBase();
-			$scope.Id = TimerService.getIndex();
-			$scope.userD = moment(TimerService.getDate());
-			$scope.s = moment();
-			$scope.diff = $scope.userD.diff($scope.s);
-
-			if($scope.diff>0){
-				$scope.errorMSG = false;
-				$window.location.href = '#/page3';
-				TimerService.storeInputs();
-			}else{
-				$scope.errorMSG = true;
+				// this where out put the time
+				// console.log(date);
+				TimerService.setDate(date);
+				$('.date_header .selection').html(format);
 			}
+		});
+		update(new Date());
 
-			
+	});
+	// the online source end here
+
+    $scope.submit = function(){
+		$scope.dataBase = TimerService.getDataBase();
+		$scope.Id = TimerService.getIndex();
+		$scope.userD = moment(TimerService.getDate());
+		$scope.s = moment();
+		$scope.diff = $scope.userD.diff($scope.s);
+
+		if($scope.diff>0){
+			$scope.errorMSG = false;
+			$window.location.href = '#/page3';
+			TimerService.storeInputs();
+		}else{
+			$scope.errorMSG = true;
 		}
+
+		
+	}
 
 });
